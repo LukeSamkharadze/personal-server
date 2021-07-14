@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  sys:
+    image: portainer/portainer-ce
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer:/data
+    container_name: portainer
+
+volumes:
+  portainer:
+
+networks:
+  default:
+    external: true
+    name: network
